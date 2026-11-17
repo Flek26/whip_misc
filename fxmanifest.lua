@@ -15,10 +15,12 @@ client_scripts {
     'client/enterseat.lua',
     'client/dice.lua',
     'client/aircontrol.lua',
+    'client/flip.lua',
 }
 server_scripts {
     'server/blacklist.lua',
     'server/dice.lua',
+    'server/flip.lua',
 }
 
 dependency 'whip_core'

@@ -160,3 +160,19 @@ Config.NoAirControl = {
     flipRoll  = 75.0,   -- degrees on its side or roof that count as flipped
     flipSpeed = 2.0,    -- ...when moving slower than this (m/s)
 }
+
+-- ============================================
+-- Flip vehicle
+-- ============================================
+--
+-- Look at a car on its side or roof: "Flip vehicle".
+
+Config.Flip = {
+    enabled = true,
+    time    = 5000,     -- the bar (ms)
+    reach   = 3.0,      -- how close to the car (metres)
+    minRoll = 60.0,     -- degrees on its side (or nose / tail) that count as flipped
+    -- Vehicle classes that can't be flipped: 14 boats, 15 helicopters, 16 planes, 21 trains.
+    skipClasses = { 14, 15, 16, 21 },
+    anim = { dict = 'missfinale_c2ig_11', clip = 'pushcar_offcliff_m' },
+}

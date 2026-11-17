@@ -98,6 +98,15 @@ Changes from xrp_misc:
   10 ms for as long as you sat in any vehicle, as a passenger too.
 - The flip angle and speed are settings.
 
+## Flip vehicle
+
+Look at a car on its side or roof and pick **Flip vehicle** (whip's prompt, `Config.Flip`). A pushing animation
+runs on whip's server-timed bar (walking off cancels it), then the car is stood back on its wheels, facing the way it
+lay. Only when nobody is driving it and it has stopped; one person at a time per car. Boats, aircraft and trains are
+left out.
+
+(xrp_misc had no flip: this is new.)
+
 ## Setup
 
 `ensure whip_misc` after whip_core. If xrp_misc stays, remove its `entityfilter.lua`, `dispatchservices.lua`,
