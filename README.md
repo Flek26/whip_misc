@@ -85,10 +85,23 @@ Changes from xrp_misc:
 - **Rate-limited** (`cooldownMs`), and limits on dice and sides with a usage message.
 - The throw is upper-body only, so the roller can keep walking.
 
+## No air control
+
+Cars can't be steered or tipped in mid-air, and an upside-down car can't be rocked back onto its wheels
+(`Config.NoAirControl`, by vehicle class; bikes, boats and aircraft are left alone).
+
+Changes from xrp_misc:
+- **Actually holds the controls.** A disabled control is only off for that one frame. xrp waited 10 ms between
+  disables, so on a fast game some of the air control still came through. Here it is every frame, but only while the
+  car is in the air or flipped.
+- **Cheaper the rest of the time.** Every 50 ms while driving on the wheels, every 500 ms otherwise. xrp ran every
+  10 ms for as long as you sat in any vehicle, as a passenger too.
+- The flip angle and speed are settings.
+
 ## Setup
 
 `ensure whip_misc` after whip_core. If xrp_misc stays, remove its `entityfilter.lua`, `dispatchservices.lua`,
-`vehGenerators.lua`, `blacklistScenario.lua`, `crouchprone.lua`, `enteranyseat.lua` and `diceroll.lua` (client and server) from its manifest.
+`vehGenerators.lua`, `blacklistScenario.lua`, `crouchprone.lua`, `enteranyseat.lua` `diceroll.lua` (client and server) and `noaircontrol.lua` from its manifest.
 
 ## For other resources
 

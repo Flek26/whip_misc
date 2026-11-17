@@ -14,6 +14,7 @@ client_scripts {
     'client/crouch.lua',
     'client/enterseat.lua',
     'client/dice.lua',
+    'client/aircontrol.lua',
 }
 server_scripts {
     'server/blacklist.lua',

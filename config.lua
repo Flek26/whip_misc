@@ -144,3 +144,19 @@ Config.Dice = {
     revealMs     = 900,      -- the throw plays this long before the number shows
     anim = { dict = 'anim@mp_player_intcelebrationmale@wank', clip = 'wank', ms = 1500 },
 }
+
+-- ============================================
+-- No air control
+-- ============================================
+--
+-- No steering or tipping a car in mid-air, and no rocking an upside-down car back onto its wheels.
+
+Config.NoAirControl = {
+    enabled   = true,
+    -- Vehicle classes it applies to. Left out: 8 motorcycles, 13 cycles, 14 boats, 15 helicopters, 16 planes,
+    -- 19 military, 21 trains.
+    classes   = { 0, 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 17, 18, 20 },
+    antiFlip  = true,
+    flipRoll  = 75.0,   -- degrees on its side or roof that count as flipped
+    flipSpeed = 2.0,    -- ...when moving slower than this (m/s)
+}
