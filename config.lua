@@ -97,4 +97,31 @@ Config.ClearAreas = {
 }
 
 -- Say in the server console which blacklisted models were refused, every so many minutes (0: never).
-Config.ReportMinutes = 1
+Config.ReportMinutes = 0
+
+-- ============================================
+-- Crouch
+-- ============================================
+
+Config.Crouch = {
+    enabled  = true,
+    key      = 'LCONTROL',   -- the default key; each player can rebind it (Settings > Key Bindings > FiveM > Crouch)
+    mode     = 'toggle',     -- 'toggle': press to crouch, press to stand. 'hold': crouched while held.
+    noSprint = false,         -- no running while crouched
+    noJump   = false,         -- no jumping while crouched
+    speed    = 1.0,          -- how fast they move crouched (1.0: GTA's own)
+}
+
+-- ============================================
+-- Enter any seat
+-- ============================================
+--
+-- F at a door gets you into that door's seat (a back door: the back seat), not GTA's walk round to the driver's.
+
+Config.EnterAnySeat = {
+    enabled = true,
+    -- How close to a door (metres) for it to count as the one you are at.
+    maxDoorDistance = 3.0,
+    -- Vehicle classes left to GTA: 8 motorcycles, 13 cycles, 14 boats, 15 helicopters, 16 planes, 21 trains.
+    skipClasses = { 8, 13, 14, 15, 16, 21 },
+}

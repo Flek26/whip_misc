@@ -37,10 +37,47 @@ Set on each player's game at start and after each spawn or revive (xrp re-ran sc
 Wanted level and AI dispatch (police, fire and ambulance responding) are already whip_core's: it turns them off at
 every spawn, so they are not here.
 
+## Crouch
+
+**Ctrl** crouches and stands (`Config.Crouch`). Players can rebind it: Settings > Key Bindings > FiveM > Crouch.
+`mode = 'hold'` makes it hold-to-crouch instead.
+
+Changes from xrp_misc:
+- The crouched walk goes through whip's walk override, so standing up gives back the player's own walk style
+  (an emote walk, whip_ems' limp). xrp kept a copy of the walk style and put it back by hand.
+- A rebindable key mapping, not a hard-coded key check every 7 ms. Nothing polls while standing except the one
+  native that keeps GTA's own stealth walk (also Ctrl) off, and nothing at all in a vehicle.
+- They stand up by themselves when they get in a car, fall, swim, climb, ragdoll or go down.
+- No crouch over a whip screen or a placing mode (whip's placer uses Ctrl).
+- Sprint and jump stay off while crouched (each a setting). xrp only did this when armed.
+- Optional crouched speed.
+- xrp's prone is not carried over. Neither is its every-100-ms action-mode loop: whip_core already keeps GTA's
+  crouched combat walk off.
+
+`exports.whip_misc:IsCrouched()` and `exports.whip_misc:SetCrouched(true|false)` on the client.
+
+## Enter any seat
+
+**F** at a door gets you into that door's seat: a back door, the back seat. GTA otherwise walks you round to the
+driver's seat (`Config.EnterAnySeat`).
+
+Built on top of whip_core's own fix (F at the front passenger door of an empty car sits you there with no slide),
+and the same way: GTA's get-in starts as usual, and the moment it does it is told again, to the seat of the door you
+are at, with no sliding across. That seat must be free; the driver's door, an occupied seat, bikes, boats, aircraft
+and trains are left to GTA. F again, or pushing away from the car, stops the walk.
+
+Changes from xrp_misc:
+- **Doors are read from the car.** xrp looped over every "door", hood and boot included, so the boot could send you
+  to seat 4. Here only the four seat doors count, and only the ones the car really has.
+- **Never blocks GTA.** xrp waited 100 ms on every F press before anything happened, and could leave F switched off
+  if it returned early (a bike, a boat). Here GTA's get-in is never held up: it is only redirected.
+- **A seat must be free**, and a far-off door doesn't count (`maxDoorDistance`).
+- **Cheap.** One native every 100 ms on foot, nothing more unless a get-in starts.
+
 ## Setup
 
 `ensure whip_misc` after whip_core. If xrp_misc stays, remove its `entityfilter.lua`, `dispatchservices.lua`,
-`vehGenerators.lua` and `blacklistScenario.lua` from its manifest.
+`vehGenerators.lua`, `blacklistScenario.lua`, `crouchprone.lua` and `enteranyseat.lua` from its manifest.
 
 ## For other resources
 

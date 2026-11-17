@@ -8,7 +8,11 @@ version '0.1.0'
 author 'Flek'
 
 shared_script 'config.lua'
-client_script 'client/world.lua'
+client_scripts {
+    'client/world.lua',
+    'client/crouch.lua',
+    'client/enterseat.lua',
+}
 server_script 'server/blacklist.lua'
 
 dependency 'whip_core'
