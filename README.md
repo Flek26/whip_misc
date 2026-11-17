@@ -74,10 +74,21 @@ Changes from xrp_misc:
 - **A seat must be free**, and a far-off door doesn't count (`maxDoorDistance`).
 - **Cheap.** One native every 100 ms on foot, nothing more unless a get-in starts.
 
+## Dice
+
+`/roll [dice] [sides]` (default one six-sided die): the server rolls, and the result floats above the roller's head
+in **whip's own /me capsule** for everyone within `Config.Dice.range`, e.g. *"rolls 2d6: 4, 3 (total 7)"*.
+
+Changes from xrp_misc:
+- **Rolled on the server, shown in whip's 3D capsule.** xrp drew its own 2D text every 7 ms on every client in
+  range, for each roll, plus a garbage-collect loop.
+- **Rate-limited** (`cooldownMs`), and limits on dice and sides with a usage message.
+- The throw is upper-body only, so the roller can keep walking.
+
 ## Setup
 
 `ensure whip_misc` after whip_core. If xrp_misc stays, remove its `entityfilter.lua`, `dispatchservices.lua`,
-`vehGenerators.lua`, `blacklistScenario.lua`, `crouchprone.lua` and `enteranyseat.lua` from its manifest.
+`vehGenerators.lua`, `blacklistScenario.lua`, `crouchprone.lua`, `enteranyseat.lua` and `diceroll.lua` (client and server) from its manifest.
 
 ## For other resources
 

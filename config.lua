@@ -125,3 +125,22 @@ Config.EnterAnySeat = {
     -- Vehicle classes left to GTA: 8 motorcycles, 13 cycles, 14 boats, 15 helicopters, 16 planes, 21 trains.
     skipClasses = { 8, 13, 14, 15, 16, 21 },
 }
+
+-- ============================================
+-- Dice: /roll [dice] [sides]
+-- ============================================
+--
+-- The server rolls; the result floats above the roller's head in whip's /me capsule for everyone within `range`.
+
+Config.Dice = {
+    enabled      = true,
+    command      = 'roll',
+    defaultDice  = 1,
+    defaultSides = 6,
+    maxDice      = 6,
+    maxSides     = 100,
+    range        = 15.0,     -- metres: who sees the result
+    cooldownMs   = 3000,     -- one roll every this long (two in a row allowed)
+    revealMs     = 900,      -- the throw plays this long before the number shows
+    anim = { dict = 'anim@mp_player_intcelebrationmale@wank', clip = 'wank', ms = 1500 },
+}

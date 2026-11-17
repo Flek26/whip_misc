@@ -64,3 +64,5 @@ exports('IsBlacklisted', function(model)
     local hash = type(model) == 'number' and model or GetHashKey(tostring(model))
     return RULE[hash]
 end)
+
+Whip.sayStarted()
