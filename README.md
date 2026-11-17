@@ -34,6 +34,10 @@ Set on each player's game at start and after each spawn or revive (xrp re-ran sc
   emptied once, so they stay empty. Scenario peds are blocked there too (`peds = false` to keep them). One entry per
   area: a label, a point and a radius. xrp's Fort Zancudo box had a sign typo (`-3075.99`) and covered the wrong place.
 
+`Config.Thermal.maxThickness`: thermal vision (a helicopter camera, thermal goggles) only sees through walls this
+thick (0.25 m), so it finds people behind a fence or a car door, not inside a building. xrp set it only at login
+through a QBCore event; here it is set with the rest, after every spawn as well.
+
 Wanted level and AI dispatch (police, fire and ambulance responding) are already whip_core's: it turns them off at
 every spawn, so they are not here.
 
@@ -107,10 +111,22 @@ left out.
 
 (xrp_misc had no flip: this is new.)
 
+## Point
+
+**B** points where the camera looks (`Config.Point`; rebind in Settings > Key Bindings > FiveM > Point;
+`mode = 'hold'` to point only while held). GTA Online's own pointing, so everyone sees it.
+
+Changes from xrp_misc:
+- **A rebindable key**, not just a `/point` command (xrp's key mapping was commented out).
+- **Its own loop, not the command's.** xrp ran the per-frame loop inside the command handler.
+- **The wall check works.** A shape test answers a frame later. xrp read it the same frame, so it never saw a wall
+  and the arm went through it.
+- **Stops by itself** in a vehicle, swimming, ragdolled, falling or down, or if GTA drops the pointing.
+
 ## Setup
 
 `ensure whip_misc` after whip_core. If xrp_misc stays, remove its `entityfilter.lua`, `dispatchservices.lua`,
-`vehGenerators.lua`, `blacklistScenario.lua`, `crouchprone.lua`, `enteranyseat.lua` `diceroll.lua` (client and server) and `noaircontrol.lua` from its manifest.
+`vehGenerators.lua`, `blacklistScenario.lua`, `crouchprone.lua`, `enteranyseat.lua` `diceroll.lua` (client and server), `noaircontrol.lua`, `point.lua` and `thermal.lua` from its manifest.
 
 ## For other resources
 

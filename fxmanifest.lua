@@ -16,6 +16,7 @@ client_scripts {
     'client/dice.lua',
     'client/aircontrol.lua',
     'client/flip.lua',
+    'client/point.lua',
 }
 server_scripts {
     'server/blacklist.lua',

@@ -176,3 +176,24 @@ Config.Flip = {
     skipClasses = { 14, 15, 16, 21 },
     anim = { dict = 'missfinale_c2ig_11', clip = 'pushcar_offcliff_m' },
 }
+
+-- ============================================
+-- Point
+-- ============================================
+
+Config.Point = {
+    enabled = true,
+    key     = 'B',          -- the default key; players can rebind it (Settings > Key Bindings > FiveM > Point)
+    mode    = 'toggle',     -- 'toggle': press to point, press to stop. 'hold': points while held.
+}
+
+-- ============================================
+-- Thermal vision
+-- ============================================
+--
+-- How thick a wall thermal vision (a helicopter camera, thermal goggles) sees through, in metres. 0.25: a fence or a
+-- car door, not a building's wall. Remove the line for GTA's own (much thicker).
+
+Config.Thermal = {
+    maxThickness = 0.25,
+}

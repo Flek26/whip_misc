@@ -48,8 +48,16 @@ local function clearAreas()
     end
 end
 
+-- Thermal vision (a helicopter's camera, thermal goggles): it sees through walls only up to this thick, so it finds
+-- people behind a fence or a car door, not inside a building. GTA's own limit is far thicker.
+local function thermal()
+    local t = Config.Thermal
+    if t and t.maxThickness then SeethroughSetMaxThickness(t.maxThickness + 0.0) end
+end
+
 local function apply()
     worldFlags()
+    thermal()
     scenarios()
     clearAreas()
 end
